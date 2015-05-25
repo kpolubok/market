@@ -242,13 +242,21 @@ console.log(data);
 					AuthenticationService.SetCredentials(response.username, response.token);
 					$ionicLoading.hide();
 					$scope.user = {};
+<<<<<<< HEAD
 					$scope.message = "OK";
+=======
+					$scope.message = "";
+>>>>>>> origin/master
 					$location.path('/app/default');
 				} else {
 					$scope.message = response.message;
 					$ionicLoading.hide();
+<<<<<<< HEAD
 				};
 				$scope.message = "NO";
+=======
+				}
+>>>>>>> origin/master
 			}, function(err) {
 				$scope.message = err.message;
 				$ionicLoading.hide();
