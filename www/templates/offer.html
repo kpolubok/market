@@ -1,0 +1,15 @@
+<ion-view view-title="Oferta">
+<ion-content>
+<div class="list card">
+	<div class="item">Oferent<span class="item-note">{{model.offer_owner}}</span></div>
+	<div class="item">Wartość<span class="item-note">{{model.entity.value}}</span></div>
+	<div class="item">Data oferty<span class="item-note">{{model.entity.offerDate}}</span></div>
+	<div class="item item-divider">Szczegóły</div>
+	<div class="item" ng-repeat="field in model.fields">
+		<p>{{field.name}}</p>
+		<span>{{field.value}}</span>
+		<span class="item-note">({{field.avalue}})</span>
+	</div>		
+</div>
+</ion-content>
+</ion-view>

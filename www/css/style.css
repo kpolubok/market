@@ -1,0 +1,40 @@
+/* Empty. Add your own CSS if you like */
+.menu-padding {padding-left:20px !important;}
+.login-content { background: url('../img/page-featured.jpg');  background-size: cover;}
+.login-content form {background:#fff; opacity:0.9;}
+.login-content p {color:#fff;font-size:2em;line-height:1.2em;text-align:center;}
+.login-content p.small {color:#000;font-size:0.8em;text-align:center;}
+
+.btn-success {
+  color: #fff;
+  background-color: #5cb85c;
+  border-color: #4cae4c;
+}
+
+.item .badge {display: inline-block; position: relative; top: inherit; right: inherit;float: right;}
+
+.auction-name {color: #4b83a0;text-transform: uppercase;font-size:1.2em;}
+.auction-desc {text-transform: uppercase;}
+.auction-tdiff{color:#000;}
+
+.offer-item > a {background-color: #efefef !important;}
+.price-best { color: #38a332; }
+.price-bad { color: red; }
+  
+/*
+.login-content { background: url('../img/page-featured.jpg');  background-size: contain;display: table;    position: absolute;    height: 100%;    width: 100%; }
+.login-content .scroll {display: table-cell;  vertical-align: middle;}
+.login-content p { line-height: 1em;    text-align: center;    color: #fff;    font-size: 45px;}
+.login-content p.small {font-size: 15px;color: #000;}
+.login-content form {opacity:0.88;padding-left:20px;padding-right:20px;}
+*/
+	
+	/*
+	.item .badge {
+	display: inline-block;
+  position: relative;
+  top: inherit;
+  right: inherit;
+  
+  .item-content { background-color: #FAFAFA;
+	*/

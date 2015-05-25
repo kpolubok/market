@@ -1,0 +1,47 @@
+<!--<ion-view hide-back-button="true">
+  <ion-content  class="login-content">
+
+	<p>Mark-et</p>
+	<p>Twoje aukcje i oferty w każdym miejscu</p>
+	<p>Analizuj. Zarządzaj.</p>
+  
+    <form ng-submit="doLogin()">
+      <div class="list">
+        <label class="item item-input">
+          <span class="input-label">E-mail</span>
+          <input type="text" ng-model="loginData.username">
+        </label>
+        <label class="item item-input">
+          <span class="input-label">Hasło</span>
+          <input type="password" ng-model="loginData.password">
+        </label>
+        <label class="item">
+          <button class="button button-block button-positive" type="submit">Zaloguj się</button>
+        </label>
+		<p class="item small">Nie masz konta? Zarejestruj się na <a>mark-et.pl</a></p>
+      </div>
+	  
+    </form>
+  </ion-content>
+</ion-view>-->
+
+<ion-view hide-back-button="true">
+	<ion-content class="login-content">
+		<p>Mark-et</p>
+		<p>Twoje aukcje i oferty w każdym miejscu</p>
+		<p>Analizuj. Zarządzaj.</p>
+		<form class="list padding">
+			<div>{{message}}</div>
+			<label class="item item-input">
+			<input type="text" placeholder="Mail" ng-model="user.username" required>
+			</label>
+			<label class="item item-input">
+			<input type="password" placeholder="Hasło" ng-model="user.password" required>
+			</label>
+			<div class="padding">
+				<button class="button button-block button-balanced icon ion-log-in" ng-click="login()"> Zaloguj się</button>
+			</div>
+			<p class="small">Nie masz konta? Zarejestruj się na <a>mark-et.pl</a></p>		
+		</form>
+	</ion-content>
+</ion-view>

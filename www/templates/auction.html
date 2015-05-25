@@ -1,0 +1,42 @@
+<ion-view view-title="Aukcja">
+<ion-content>
+<div class="list card">
+	<div class="item">
+		<h2 style="text-transform: uppercase;">{{model.entity.id}} / {{model.header}}</h2>
+		<p>{{model.entity.description}}</p>
+	</div>
+	<div class="item item-divider">Terminy</div>
+	<div class="item">Data zakończenia aukcji<span class="item-note">{{model.entity.dataZakonczeniaAukcji}}</span></div>
+	<div class="item">Data rozpoczęcia realizacji<span class="item-note">{{model.entity.dataStartRealizacji}}</span></div>
+	<div class="item">Data zakończenia realizacji<span class="item-note">{{model.entity.dataZakonczeniaRealizacji}}</span></div>
+	
+	<div class="item item-divider">Lokalizacja</div>
+	<div class="item">Województwo<span class="item-note">{{model.entity.state}}</span></div>
+	<div class="item">Powiat<span class="item-note">{{model.entity.district}}</span></div>
+	<div class="item">Miasto<span class="item-note">{{model.entity.city}}</span></div>
+	<div class="item item-divider">Szczegóły</div>
+	<div class="item">Kategoria<span class="item-note">{{model.entity.category}}</span></div>
+	<div class="item">Wymóg zgodności<span class="item-note">{{model.entity.wymogZgodnosci ? 'tak' : 'nie'}}</span></div>
+	<div class="item">Jawność aukcji<span class="item-note">{{model.entity.jawnoscAukcji}}</span></div>
+	<div class="item">Typ aukcji<span class="item-note">{{model.entity.typLicytacji}}</span></div>
+	
+	
+	<div class="item" ng-repeat="field in model.fields">{{field.name}}<span class="item-note">{{field.value}}</span></div>
+	
+	<div class="item item-divider">Oferty</div>
+	<div class="list list-inset">
+		<div class="item" ng-repeat="offer in model.offers">
+			<div style="float:left">
+				<h2 class="auction-name">{{offer.uname || offer.cname }}</h2>
+				<p class="auction-desc">WARTOŚĆ: <span class="auction-tdiff">{{offer.value}}</span></p>
+			</div>
+			<div style="float:right">
+				<p>Data:  <span style="color:#000">{{offer.offerDate}}</span></p>
+				<p ng-show="offer.win"><span style="color: #38a332;">WYBRANA OFERTA</span></p>
+			</div>			
+		</div>
+		<p style="font-size:1.5em; text-transform: uppercase; text-align:center;" ng-hide="model.offers.length">Brak ofert</p>
+	</div>
+</div>
+</ion-content>
+</ion-view>

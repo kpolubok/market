@@ -1,0 +1,30 @@
+<ion-side-menus enable-menu-with-back-views="false">
+	<ion-side-menu-content>
+		<ion-nav-bar class="bar-stable">
+			<ion-nav-back-button>
+			</ion-nav-back-button>
+			<ion-nav-buttons side="left">
+				<button class="button button-icon button-clear ion-navicon" menu-toggle="left">
+				</button>
+			</ion-nav-buttons>
+		</ion-nav-bar>
+		<ion-nav-view name="menuContent"></ion-nav-view>
+	</ion-side-menu-content>
+	<ion-side-menu side="left">
+		<ion-header-bar class="bar-stable">
+			<h1 class="title">Menu</h1>
+		</ion-header-bar>
+		<ion-content>
+			<ion-list>
+				<ion-item ng-hide="logged" class="item-icon-left" menu-close ng-click="login()"><i class="icon ion-ios-locked-outline"></i> Zaloguj się</ion-item>
+				<ion-item ng-show="logged" class="item-icon-left" menu-close ng-click="logoff()"><i class="icon ion-ios-unlocked-outline"></i> Wyloguj się</ion-item>				
+				<ion-item ng-show="logged" class="item-icon-left" menu-close href="#/app/auctions"><i class="icon ion-ios-bookmarks-outline"></i> Moje aukcje</ion-item>
+				<ion-item ng-show="logged" class="item-icon-left menu-padding" menu-close href="#/app/auctions/f"><i class="icon ion-ios-checkmark-outline"></i> Zakończone</ion-item>
+				<ion-item ng-show="logged" class="item-icon-left menu-padding" menu-close href="#/app/auctions/t"><i class="icon ion-ios-help-outline"></i> Trwające</ion-item>
+				<ion-item ng-show="logged" class="item-icon-left" menu-close href="#/app/offers"><i class="icon ion-ios-book-outline"></i> Moje oferty</ion-item>
+				<ion-item ng-show="logged" class="item-icon-left menu-padding" menu-close href="#/app/offers/w"><i class="icon ion-ios-checkmark-outline"></i> Wybrane</ion-item>
+				<ion-item ng-show="logged" class="item-icon-left menu-padding" menu-close href="#/app/offers/t"><i class="icon ion-ios-help-outline"></i> Nierozstrzygnięte</ion-item>				
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+</ion-side-menus>

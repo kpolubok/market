@@ -1,0 +1,50 @@
+<ion-view view-title="Moje oferty">
+	<ion-nav-buttons side="right">
+		<button class="button button-clear icon ion-ios-search-strong" ng-click="toggleFilter()"></button>
+	</ion-nav-buttons>
+	<ion-content>
+		<div class="list" ng-show="filter">
+			<div class="item item-divider">TERMIN AUKCJI
+				<a style="float:right;font-size:16px;" class="icon ion-close" ng-click="noTermin()"></a>
+			</div>
+			<ion-radio name="t1" ng-model="termin.choice" ng-value="'1'">Trwające aktualnie  <span class="badge badge-assertive">{{termin.trwa.count}}</span></ion-radio>
+			<ion-radio name="t1" ng-model="termin.choice" ng-value="'2'">Zakończone  <span class="badge badge-assertive">{{termin.koniec.count}}</span></ion-radio>
+			
+			<div class="item item-divider">TYP AUKCJI
+				<a style="float:right;font-size:16px;" class="icon ion-close" ng-click="noTyp()"></a>
+			</div>
+			<ion-radio name="t2" ng-model="typ.choice" ng-value="'1'">Otwarte / publiczne  <span class="badge badge-assertive">{{typ.otwarte.count}}</span></ion-radio>
+			<ion-radio name="t2" ng-model="typ.choice" ng-value="'2'">Zamknięte / prywatne  <span class="badge badge-assertive">{{typ.zamkniete.count}}</span></ion-radio>
+			
+			<div class="item item-divider">MOJE OFERTY
+				<a style="float:right;font-size:16px;" class="icon ion-close" ng-click="noMoje()"></a>
+			</div>
+			<ion-radio name="t3" ng-model="my.choice" ng-value="'1'">Wygrane oferty <span class="badge badge-assertive">{{my.zoferta.count}}</span></ion-radio>			
+
+			<div class="item" style="text-align:center;border-bottom:2px solid #777">
+				<button class="button button-balanced icon-left ion-ios-search" ng-click="refresh()">Filtruj</button>
+			</div>
+		</div>		
+		<ion-list class="auctions">
+			<ion-item ng-repeat-start="auction in offers" href="#/app/auction/{{auction.id}}">
+				<div style="float:left">
+					<h2 class="auction-name">{{auction.id}} / {{auction.name}}</h2>
+					<p class="auction-desc">DO KOŃCA: <span class="auction-tdiff">{{auction.tdiff}}</span></p>
+				</div>
+				<div style="float:right">
+					<p ng-show="auction.offer_count > 0">Ofert :  <span style="color:#000">{{auction.offer_count}}</span></p>
+					<p ng-show="auction.offer_min > 0">Cena : <span style="color: #38a332;">{{auction.offer_min}}</span></p>
+				</div>
+			</ion-item>
+			<ion-item ng-repeat-end href="#/app/offer/{{auction.offerid}}" class="offer-item">
+				<div style="float:left">
+					<p class="auction-desc"><span class="auction-tdiff">{{auction.offerDate}}</span></p>
+				</div>
+				<div style="float:right">
+					<p><span ng-class="auction.value >  auction.offer_min ? 'price-bad' : 'price-best'">{{auction.value}}</span></p>
+				</div>
+			</ion-item>
+		</ion-list>
+		<p style="font-size:1.5em; text-transform: uppercase; text-align:center;" ng-hide="offers.length">Brak ofert</p>
+	</ion-content>
+</ion-view>
