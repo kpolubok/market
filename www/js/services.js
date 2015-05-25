@@ -90,14 +90,11 @@ angular.module('starter.services', [])
 			return $rootScope.globals.currentUser.token;
 		},
 		Login: function(username,password){
-			var q = $q.defer();
-<<<<<<< HEAD
-			$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
-			$http.post(ApiEndpoint.url+'login',{ timeout: 5000,username: username, password: password }) 
-=======
+			var q = $q.defer();			
+			//$http.post(ApiEndpoint.url+'login',{ timeout: 5000,username: username, password: password }) 
 			//$http.defaults.headers.post["Content-Type"] = "application/x-www-form-urlencoded";
 			$http.post(ApiEndpoint.url+'login',{ username: username, password: password })
->>>>>>> origin/master
+
 				.success(function(data) {
 					q.resolve(data);
 				})
