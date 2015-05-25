@@ -20,14 +20,10 @@
     "com.ionic.keyboard"
   ],
   "cordovaPlatforms": [
-<<<<<<< HEAD
     {
       "platform": "android",
       "locator": "windows"
     },
     "ios"
-=======
-    "android"
->>>>>>> origin/master
   ]
 }
