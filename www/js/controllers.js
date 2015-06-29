@@ -63,7 +63,65 @@ angular.module('starter.controllers', [])
 			//$location.url('/app/default');
 		}, 1000);
 	};
-}).controller('AuctionsCtrl', function($scope, $ionicLoading, Auctions, $location, $stateParams) {	
+})
+.controller('AllAuctionsCtrl', function($scope, $ionicLoading, Auctions, $location, $stateParams) {	
+	$scope.noTermin = function() {
+		$scope.termin.choice = null;
+	}
+	$scope.noTyp = function() {
+		$scope.typ.choice = null;
+	}
+	$scope.noMoje = function() {
+		$scope.my.choice = null;
+	}
+
+	$scope.filter = false;
+	$scope.toggleFilter = function() {
+		$scope.filter = !$scope.filter;
+	}
+	
+	$scope.termin = {
+		trwa : { value: "bb", count: 0 },
+		koniec : { value: "ng", count: 0 }
+	};
+	$scope.typ = {
+		otwarte : { value: "bb", count: 0 },
+		zamkniete : { value: "ng", count: 0 }
+	};
+	$scope.my = {
+		zoferta : { count: 0 }
+	};
+	$scope.auctions = [];
+
+	$scope.refresh = function() {	
+		$ionicLoading.show({
+			showBackdrop: true
+		});
+		Auctions.fetchAll(false,$scope.termin.choice,$scope.typ.choice,$scope.my.choice).then(
+			function(data) {
+				$scope.termin.trwa.count =  data.filterAuctionPhaseCount[0].ongoing || 0;
+				$scope.termin.koniec.count =  data.filterAuctionPhaseCount[0].completed || 0;
+				$scope.typ.otwarte.count = data.auctionTypeCount[0].open || 0;
+				$scope.typ.zamkniete.count = data.auctionTypeCount[0].closed || 0;
+				$scope.my.zoferta.count = data.wybranaOferta || 0;
+				
+				$scope.auctions = data.auctionList.list;
+				$ionicLoading.hide();
+			},
+			function(err) {
+				$location.path('/login');
+				$ionicLoading.hide();
+			}
+		);
+	};
+	
+	if($stateParams.t) {
+			if($stateParams.t == 't') { $scope.termin.choice = '1' }
+			if($stateParams.t == 'f') { $scope.termin.choice = '2' }			
+		}
+	$scope.refresh();
+})
+.controller('AuctionsCtrl', function($scope, $ionicLoading, Auctions, $location, $stateParams) {	
 	$scope.noTermin = function() {
 		$scope.termin.choice = null;
 	}
@@ -217,7 +275,40 @@ console.log(data);
 		);
 	
 })
-
+/*** NEW OFFER ***/
+.controller('NewOfferCtrl', function($scope, $stateParams, Auctions,$ionicLoading,$ionicPopup,$location) {
+	$scope.model = {};
+	var aid = $stateParams.auctionId;
+	_this = this;
+	_this.aid = $stateParams.auctionId;
+	$scope.send = function() {
+		$ionicLoading.show({
+			showBackdrop: true
+		});
+		Auctions.newoffer($stateParams.auctionId,$scope.model.value).then(
+			function(result) {
+				//console.log(result);
+				$ionicLoading.hide();
+				var alertPopup = $ionicPopup.alert({
+					title: 'Sukces!',
+					template: 'Złozyłeś ofertę'
+				});
+				alertPopup.then(function(res) {
+				console.log(aid);
+					//$location.path('/app/auction/'aid);
+					$location.path('/app/allauctions');
+					//console.log('Thank you for not eating my delicious ice cream cone');
+				});
+				
+			},
+			function(err) {
+				console.log(err);
+				$scope.message = err.message;
+				$ionicLoading.hide();
+			}
+		);
+	};
+})
 /*** LOGIN ***/
 .controller('LoginCtrl', function($scope, AuthenticationService, $location, $ionicLoading) {
 	$scope.$on('$ionicView.beforeEnter', function(){

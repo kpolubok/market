@@ -25,6 +25,9 @@
 	
 	<div class="item item-divider">Oferty</div>
 	<div class="list list-inset">
+		<div style="text-align: center;padding-bottom: 20px;">
+			<a class="button button-balanced icon-left ion-ios-plus-outline" href="#/app/newoffer/{{model.entity.id}}">Złóż ofertę</a>
+		</div>
 		<div class="item" ng-repeat="offer in model.offers">
 			<div style="float:left">
 				<h2 class="auction-name">{{offer.uname || offer.cname }}</h2>

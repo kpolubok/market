@@ -17,7 +17,8 @@
 		<ion-content>
 			<ion-list>
 				<ion-item ng-hide="logged" class="item-icon-left" menu-close ng-click="login()"><i class="icon ion-ios-locked-outline"></i> Zaloguj się</ion-item>
-				<ion-item ng-show="logged" class="item-icon-left" menu-close ng-click="logoff()"><i class="icon ion-ios-unlocked-outline"></i> Wyloguj się</ion-item>				
+				<ion-item ng-show="logged" class="item-icon-left" menu-close ng-click="logoff()"><i class="icon ion-ios-unlocked-outline"></i> Wyloguj się</ion-item>								
+				<ion-item ng-show="logged" class="item-icon-left" menu-close href="#/app/allauctions"><i class="icon ion-ios-bookmarks-outline"></i> Wszystkie aukcje</ion-item>
 				<ion-item ng-show="logged" class="item-icon-left" menu-close href="#/app/auctions"><i class="icon ion-ios-bookmarks-outline"></i> Moje aukcje</ion-item>
 				<ion-item ng-show="logged" class="item-icon-left menu-padding" menu-close href="#/app/auctions/f"><i class="icon ion-ios-checkmark-outline"></i> Zakończone</ion-item>
 				<ion-item ng-show="logged" class="item-icon-left menu-padding" menu-close href="#/app/auctions/t"><i class="icon ion-ios-help-outline"></i> Trwające</ion-item>

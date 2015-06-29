@@ -1,8 +1,8 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .constant('ApiEndpoint', {
-	url: 'http://mark-et.pl/pl/api/'
-	//url: 'http://localhost/app_dev.php/pl/api/'
+	//url: 'http://mark-et.pl/pl/api/'
+	url: 'http://localhost/app_dev.php/pl/api/'
 })
 
 .run(function($rootScope, $location, $ionicPlatform,$localstorage) {
@@ -33,7 +33,9 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 	});
 })
 
-.config(function($stateProvider, $urlRouterProvider) {
+.config(function($stateProvider, $urlRouterProvider,$interpolateProvider) {
+	//$interpolateProvider.startSymbol('{[{').endSymbol('}]}');
+	
 	$stateProvider.state('app', {
 		url: "/app",
 		abstract: true,
@@ -52,7 +54,17 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 				controller: 'AppCtrl'
 			}
 		}
-	}).state('app.auctions', {
+	})
+	.state('app.allauctions', {
+		url: "/allauctions",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/auctions.html",
+				controller: 'AllAuctionsCtrl'
+			}
+		}
+	})
+	.state('app.auctions', {
 		url: "/auctions",
 		views: {
 			'menuContent': {
@@ -116,21 +128,30 @@ angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 				controller: 'OfferCtrl'
 			}
 		}
+	}).state('app.newoffer', {
+		url: "/newoffer/:auctionId",
+		views: {
+			'menuContent': {
+				templateUrl: "templates/new.html",
+				controller: 'NewOfferCtrl'
+			}
+		}
 	});
 	$urlRouterProvider.otherwise('/login');
 }).factory('$localstorage', ['$window', function($window) {
+	random='SDFAgdfgdgf_';
 	return {
 		set: function(key, value) {
-			$window.localStorage[key] = value;
+			$window.localStorage[random+key] = value;
 		},
 		get: function(key, defaultValue) {
-			return $window.localStorage[key] || defaultValue;
+			return $window.localStorage[random+key] || defaultValue;
 		},
 		setObject: function(key, value) {
-			$window.localStorage[key] = JSON.stringify(value);
+			$window.localStorage[random+key] = JSON.stringify(value);
 		},
 		getObject: function(key) {
-			return JSON.parse($window.localStorage[key] || '{}');
+			return JSON.parse($window.localStorage[random+key] || '{}');
 		}
 	}
 }]);
