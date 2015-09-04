@@ -1,8 +1,8 @@
 angular.module('starter', ['ionic', 'starter.controllers', 'starter.services'])
 
 .constant('ApiEndpoint', {
-	//url: 'http://mark-et.pl/pl/api/'
-	url: 'http://localhost/app_dev.php/pl/api/'
+	url: 'http://mark-et.pl/pl/api/'
+	//url: 'http://localhost/app_dev.php/pl/api/'
 })
 
 .run(function($rootScope, $location, $ionicPlatform,$localstorage) {
