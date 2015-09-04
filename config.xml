@@ -1,10 +1,8 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<widget id="pl.mark-et" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0">
+<widget id="pl.mark-et" version="0.0.2" xmlns="http://www.w3.org/ns/widgets" xmlns:cdv="http://cordova.apache.org/ns/1.0" xmlns:gap="http://phonegap.com/ns/1.0">
   <name>market</name>
   <description>Market mobile: platforma wspomagająca</description>
-<author email="thecodefactory.pl@gmail.com" href="http://thecodefactory.pl/">&#xD;
-      Manufaktura kodu&#xD;
-    </author>
+  <author email="thecodefactory.pl@gmail.com" href="http://thecodefactory.pl/">Manufaktura kodu</author>
   <content src="index.html"/>
   <access origin="*"/>
   <preference name="webviewbounce" value="false"/>
